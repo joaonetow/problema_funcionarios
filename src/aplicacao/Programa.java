@@ -17,6 +17,9 @@ public class Programa {
 		int horasTrabalhadas;
 		char digitarOutro;
 
+		int totalHorasTrabalhadas = 0;
+		double custoTotal = 0.0;
+
 		do {
 
 			System.out.print("Nome: ");
@@ -41,10 +44,17 @@ public class Programa {
 			System.out.print("Digitar outro (S/N)? ");
 			digitarOutro = sc.next().charAt(0);
 
+			// Total horas trabalhadas
+
+			totalHorasTrabalhadas = totalHorasTrabalhadas + horasTrabalhadas;
+
+			// Custo Total
+			custoTotal = custoTotal + valorHora * horasTrabalhadas;
+
 		} while (digitarOutro == 'S');
 
 		// Menu
-		
+
 		int opcao;
 
 		do {
@@ -57,6 +67,18 @@ public class Programa {
 			System.out.print("Digite uma opção: ");
 
 			opcao = sc.nextInt();
+
+			System.out.println();
+
+			if (opcao == 1) {
+
+				System.out.printf("Total de horas = %d%n", totalHorasTrabalhadas);
+
+			} else if (opcao == 2) {
+
+				System.out.printf("Custo Total = R$ %.2f%n", custoTotal);
+
+			}
 
 		} while (opcao != 4);
 
