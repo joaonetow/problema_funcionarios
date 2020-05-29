@@ -20,6 +20,9 @@ public class Programa {
 		int totalHorasTrabalhadas = 0;
 		double custoTotal = 0.0;
 
+		double custoPorPessoa, maiorCusto = 0;
+		String nomePessoaGanhouMais = "";
+
 		do {
 
 			System.out.print("Nome: ");
@@ -44,12 +47,22 @@ public class Programa {
 			System.out.print("Digitar outro (S/N)? ");
 			digitarOutro = sc.next().charAt(0);
 
+			custoPorPessoa = valorHora * horasTrabalhadas;
+
 			// Total horas trabalhadas
 
 			totalHorasTrabalhadas = totalHorasTrabalhadas + horasTrabalhadas;
 
 			// Custo Total
-			custoTotal = custoTotal + valorHora * horasTrabalhadas;
+
+			custoTotal = custoTotal + custoPorPessoa;
+
+			if (custoPorPessoa > maiorCusto) {
+
+				nomePessoaGanhouMais = nome;
+				maiorCusto = custoPorPessoa;
+
+			}
 
 		} while (digitarOutro == 'S');
 
@@ -77,6 +90,14 @@ public class Programa {
 			} else if (opcao == 2) {
 
 				System.out.printf("Custo Total = R$ %.2f%n", custoTotal);
+
+			} else if (opcao == 3) {
+
+				System.out.printf("Pessoa que ganhou mais: %s%n", nomePessoaGanhouMais);
+
+			} else if (opcao == 4) {
+
+				System.out.println("FIM DO PROGRAMA!");
 
 			}
 
